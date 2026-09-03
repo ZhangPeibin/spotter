@@ -1,0 +1,19 @@
+{
+  "name": "peibin-hooks",
+  "version": "0.1.0+codex.20260903113435",
+  "description": "Session-start rules for minimal, meaningful verification.",
+  "author": {
+    "name": "Peibin"
+  },
+  "interface": {
+    "displayName": "Peibin Hooks",
+    "shortDescription": "Choose minimal verification evidence.",
+    "longDescription": "Adds base verification rules and framework profiles for focused, meaningful validation.",
+    "developerName": "Peibin",
+    "category": "Productivity",
+    "capabilities": [
+      "Verification Harness"
+    ],
+    "defaultPrompt": "Apply minimal sufficient verification evidence."
+  }
+}
