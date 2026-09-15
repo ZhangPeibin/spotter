@@ -5,10 +5,22 @@
   },
   "plugins": [
     {
-      "name": "peibin-hooks",
+      "name": "spotter-simplify",
       "source": {
         "source": "local",
-        "path": "./plugins/peibin-hooks"
+        "path": "./plugins/spotter-simplify"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "spotter-orchestrator",
+      "source": {
+        "source": "local",
+        "path": "./plugins/spotter-orchestrator"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,19 @@
+{
+  "name": "spotter-simplify",
+  "version": "0.1.0+codex.20260915093043",
+  "description": "Session-start Spotter full rules and minimal, meaningful verification.",
+  "author": {
+    "name": "Peibin"
+  },
+  "interface": {
+    "displayName": "Spotter Simplify",
+    "shortDescription": "Simple implementation and sufficient verification.",
+    "longDescription": "Injects Spotter full coding rules and routes base and project-specific verification skills for focused, meaningful validation.",
+    "developerName": "Peibin",
+    "category": "Productivity",
+    "capabilities": [
+      "Verification Harness"
+    ],
+    "defaultPrompt": "Apply minimal sufficient verification evidence."
+  }
+}

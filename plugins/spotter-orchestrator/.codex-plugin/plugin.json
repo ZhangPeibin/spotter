@@ -1,0 +1,20 @@
+{
+  "name": "spotter-orchestrator",
+  "version": "0.1.0+codex.20260915093043",
+  "description": "Load role files on demand and route each task to its executor and model.",
+  "author": {
+    "name": "Peibin"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Spotter Orchestrator",
+    "shortDescription": "Route product and engineering tasks to subagents.",
+    "longDescription": "Loads a compact role index, reads only the needed agent definition, and routes tasks to explicit models while sharing one worktree per feature.",
+    "developerName": "Peibin",
+    "category": "Productivity",
+    "capabilities": [
+      "Workflow Orchestration"
+    ],
+    "defaultPrompt": "Use $orchestrate to coordinate the current product or engineering task."
+  }
+}

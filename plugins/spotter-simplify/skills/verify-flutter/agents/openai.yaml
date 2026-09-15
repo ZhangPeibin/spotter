@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spotter Verify Flutter"
+  short_description: "Choose evidence at the correct Flutter test layer"
+  default_prompt: "Use $verify-flutter with $verify to verify this Flutter change."

@@ -1,7 +1,8 @@
 {
-  "name": "peibin-hooks",
+  "name": "spotter-simplify",
   "private": true,
   "scripts": {
+    "evaluate": "node scripts/evaluate.js",
     "test": "node --test test/*.test.js"
   }
 }

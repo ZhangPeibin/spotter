@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spotter Verify"
+  short_description: "Choose minimal evidence by behavioral boundary"
+  default_prompt: "Use $verify to select and run sufficient evidence for this change."

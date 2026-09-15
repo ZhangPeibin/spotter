@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { buildContext } = require('./verification-rules');
+const { buildContext } = require('./session-context');
 
 process.stdout.write(JSON.stringify({
   hookSpecificOutput: {
