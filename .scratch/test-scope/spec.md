@@ -1,4 +1,4 @@
-# Peibin Hooks: Test Scope
+# Spotter: Test Scope
 
 **Status:** ready
 **Release:** v0.1
@@ -6,7 +6,7 @@
 
 ## Summary
 
-Add the first capability to the `peibin-hooks` Codex plugin: concise lifecycle guidance that asks Codex to choose test scope in proportion to the current change.
+Add the first capability to the `spotter` Codex plugin: concise lifecycle guidance that asks Codex to choose test scope in proportion to the current change.
 
 The plugin advises the model through `SessionStart` developer context. It does not inspect Git, map paths to tests, intercept Bash, or block full-suite commands.
 
@@ -20,7 +20,7 @@ When a Codex session starts or its context is restored, the model receives a con
 
 1. Run the smallest test that can fail because of the change.
 2. Expand to the affected package or module when the change crosses a local boundary.
-3. Run the full suite when impact is broad or uncertain, the user explicitly requests it, or release-level verification is appropriate.
+3. Run the full suite for a repository-required final gate, shared-runtime or dependency migration, an explicit user request, or release-level verification. Uncertainty first requires identifying the affected boundaries.
 
 ## Users
 
@@ -35,7 +35,7 @@ Developers using Codex in repositories where full test suites are meaningfully s
 - Return valid JSON with:
   - `hookSpecificOutput.hookEventName` equal to `SessionStart`.
   - `hookSpecificOutput.additionalContext` containing the test-scope policy.
-- Exit successfully without reading or modifying the active repository.
+- Read only the working directory's `pubspec.yaml` for Dart/Flutter skill routing; do not modify the active repository.
 - If the hook cannot run, normal Codex behaviour continues.
 
 ### Advisory policy
@@ -45,14 +45,14 @@ The injected context must tell Codex to:
 - inspect repository instructions, changed code, dependencies, and nearby tests before choosing a command;
 - start with the smallest relevant test;
 - expand to package or module tests when a local boundary is crossed;
-- use the full suite for broad or uncertain impact, explicit user requests, or release verification;
+- use the full suite for required final gates, shared-runtime or dependency migrations, explicit user requests, or release verification;
 - report which validation ran and which broader validation was intentionally skipped.
 
 The wording must remain advisory. It must not claim that a test scope is guaranteed correct or override stronger repository or user instructions.
 
 ### Packaging
 
-- Plugin and repository name: `peibin-hooks`.
+- Plugin and repository name: `spotter`.
 - First capability name: `test-scope`.
 - Author: `Peibin`.
 - Include a valid Codex plugin manifest and personal marketplace entry.
@@ -73,9 +73,9 @@ The wording must remain advisory. It must not claim that a test scope is guarant
 ## Proposed Structure
 
 ```text
-peibin-hooks/
+spotter/
 |-- .agents/plugins/marketplace.json
-`-- plugins/peibin-hooks/
+`-- plugins/spotter/
     |-- .codex-plugin/plugin.json
     |-- hooks/
     |   |-- hooks.json
@@ -83,7 +83,7 @@ peibin-hooks/
     `-- test/test-scope.test.js
 ```
 
-The generated Codex manifest does not declare a `hooks` field; Codex discovers the default `hooks/hooks.json` path. Do not add a package dependency or abstraction layer. Keep the policy and output construction in the single hook file.
+The generated Codex manifest does not declare a `hooks` field; Codex discovers the default `hooks/hooks.json` path. Do not add a package dependency. The hook emits skill-loading context; `spotter-base` and `verification-flutter` own the verification policy.
 
 ## Verification
 
@@ -100,7 +100,7 @@ Manual verification must install the local plugin, review and trust its hook, st
 
 ## Acceptance Criteria
 
-- `peibin-hooks` installs as a valid local Codex plugin.
+- `spotter` installs as a valid local Codex plugin.
 - The hook supplies the advisory on all four configured `SessionStart` sources.
 - The advisory is generic and requires no repository configuration.
 - No Bash command is blocked, rewritten, or automatically executed.
@@ -110,8 +110,8 @@ Manual verification must install the local plugin, review and trust its hook, st
 ## Risks
 
 - Advisory guidance cannot guarantee model compliance. This is intentional for v0.1.
-- An unfamiliar repository may not expose a focused command. The policy directs uncertainty toward broader validation.
-- The name may change from `peibin-hooks` to `Spotter` if the project later becomes a public product; no public-brand migration work belongs in v0.1.
+- An unfamiliar repository may not expose a focused command. Inspect its available evidence before choosing scope; uncertainty alone does not require a full suite.
+- The project and plugin use `Spotter` as the public name and `spotter` as the technical slug.
 
 ## Source
 

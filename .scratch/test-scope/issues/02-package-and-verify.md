@@ -22,7 +22,7 @@ Make the completed v0.1 plugin installable and verifiable in a fresh Codex sessi
 - Local install and uninstall instructions are reproducible.
 - A fresh Codex session receives the test-scope advisory.
 - Documentation states that the feature is advisory, zero-configuration, Codex-only, and does not control CI or subagents.
-- No public repository URL or `Spotter` migration work is added.
+- No public repository URL is added.
 
 ## References
 
